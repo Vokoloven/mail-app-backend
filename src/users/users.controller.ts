@@ -10,6 +10,6 @@ export class UsersController {
   createUser(@Body() dto: UsersDto) {
     console.log({ dto });
 
-    return this.usersService.createUser();
+    return this.usersService.createUser(dto);
   }
 }
