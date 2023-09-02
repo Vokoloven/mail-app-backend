@@ -40,10 +40,7 @@ export class UsersController {
   }
 
   @Patch(':id')
-  async updateUserById(
-    @Param('id') id: string,
-    @Body() dto: Partial<UsersDto>,
-  ) {
+  async updateUserById(@Param('id') id: string, @Body() dto: UsersDto) {
     try {
       const parseId = parseInt(id);
 
