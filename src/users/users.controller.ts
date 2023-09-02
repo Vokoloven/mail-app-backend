@@ -11,32 +11,35 @@ import {
 import { UsersService } from './users.service';
 import { UsersDto } from './dto';
 
-@Controller('/')
+@Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Post('users')
+  @Post('')
   async createUser(@Body() dto: UsersDto) {
     const createUser = await this.usersService.createUser(dto);
 
     return createUser;
   }
 
-  @Get('users')
+  @Get('')
   async getAllUsers() {
     const users = await this.usersService.getAllUsers();
 
     return users;
   }
 
-  @Get('users/byRole/:role')
+  @Get('byRole/:role')
   async findByRole(@Param('role') role: string) {
     const users = await this.usersService.getUsersByRole(role);
+    if (!Boolean(users.length)) {
+      throw new NotFoundException(`No users found with role: ${role}`);
+    }
 
     return users;
   }
 
-  @Patch('users/:id')
+  @Patch(':id')
   async updateUserById(
     @Param('id') id: string,
     @Body() dto: Partial<UsersDto>,
@@ -51,13 +54,12 @@ export class UsersController {
 
       return updatedUserById;
     } catch (error) {
-      console.log(error);
       if (error instanceof NotFoundException)
         throw new NotFoundException(error.message);
     }
   }
 
-  @Delete('/users/:id')
+  @Delete(':id')
   async deleteUserById(@Param('id') id: string) {
     try {
       const parseId = parseInt(id);
