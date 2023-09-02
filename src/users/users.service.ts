@@ -20,13 +20,16 @@ export class UsersService {
           },
         },
       },
+      include: { profile: true },
     });
 
     return user;
   }
 
   async getAllUsers() {
-    const users = await this.prisma.user.findMany();
+    const users = await this.prisma.user.findMany({
+      include: { profile: true },
+    });
 
     return users;
   }
@@ -36,11 +39,12 @@ export class UsersService {
       where: {
         role,
       },
+      include: { profile: true },
     });
     return users;
   }
 
-  async updateDataUserById(id: number, dto: Partial<UsersDto>) {
+  async updateDataUserById(id: number, dto: UsersDto) {
     const existingUser = await this.prisma.user.findUnique({
       where: {
         id,
@@ -67,6 +71,7 @@ export class UsersService {
           },
         },
       },
+      include: { profile: true },
     });
     return user;
   }
