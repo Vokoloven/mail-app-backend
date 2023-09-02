@@ -87,6 +87,12 @@ export class UsersService {
       throw new NotFoundException(`User with ID ${id} not found.`);
     }
 
+    await this.prisma.profile.deleteMany({
+      where: {
+        id: existingUser.profileId,
+      },
+    });
+
     const deleteUser = await this.prisma.user.delete({
       where: {
         id,

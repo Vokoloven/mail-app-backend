@@ -13,8 +13,8 @@ model User {
   email      String 
   role       String
   dateCreate DateTime @default(now())
-  profileId  Int     @unique
-  profile    Profile @relation(fields: [profileId], references: [id])
+  profileId  Int?    @unique
+  profile    Profile? @relation(fields: [profileId], references: [id])
 
   @@map("users")
 }

@@ -26,6 +26,10 @@ export class UsersController {
   async getAllUsers() {
     const users = await this.usersService.getAllUsers();
 
+    if (!Boolean(users.length)) {
+      throw new NotFoundException(`Not found any users in the db`);
+    }
+
     return users;
   }
 
@@ -62,8 +66,9 @@ export class UsersController {
       const parseId = parseInt(id);
       await this.usersService.deleteUserById(parseId);
 
-      return { message: 'User deleted successfully' };
+      return { message: `User deleted successfully by ID ${id}` };
     } catch (error) {
+      console.log(error);
       if (error instanceof NotFoundException) {
         throw new NotFoundException(error.message);
       }
