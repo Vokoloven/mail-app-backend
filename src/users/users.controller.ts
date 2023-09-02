@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   NotFoundException,
+  Delete,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersDto } from './dto';
@@ -53,6 +54,20 @@ export class UsersController {
       console.log(error);
       if (error instanceof NotFoundException)
         throw new NotFoundException(error.message);
+    }
+  }
+
+  @Delete('/users/:id')
+  async deleteUserById(@Param('id') id: string) {
+    try {
+      const parseId = parseInt(id);
+      await this.usersService.deleteUserById(parseId);
+
+      return { message: 'User deleted successfully' };
+    } catch (error) {
+      if (error instanceof NotFoundException) {
+        throw new NotFoundException(error.message);
+      }
     }
   }
 }
