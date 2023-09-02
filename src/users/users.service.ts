@@ -12,17 +12,22 @@ export class UsersService {
         email: dto.email,
         username: dto.username,
         role: dto.role,
+        profile: {
+          create: {
+            firstName: dto.firstName,
+            lastName: dto.lastName,
+            state: dto.state,
+          },
+        },
       },
     });
 
-    const profile = await this.prisma.profile.create({
-      data: {
-        firstName: dto.firstName,
-        lastName: dto.lastName,
-        state: dto.state,
-      },
-    });
+    return user;
+  }
 
-    return { user, profile };
+  async getAllUsers() {
+    const users = await this.prisma.user.findMany();
+
+    return users;
   }
 }
