@@ -63,16 +63,20 @@ $ npm run db:dev:restart
   - endpoint:  http://localhost:3333/users
   - method: POST
   - body: {username, email, role*, firstName, state*, lastName}
+
 2. Get all users
   - endpoint: http://localhost:3333/users
   - method: GET
+
 3. Sorted by role: admin or user
   - endpoint: http://localhost:3333/users/byRole/{admin or user}
   - method: GET
+
 4. Update existing user
   - endpoint: http://localhost:3333/users/{user id}
   - method: PATCH
   - body: {username, email, role*, firstName, state*, lastName}
+
 5. Delete existing user
   - endpoint: http://localhost:3333/users/{user id}
   - method: DELETE
