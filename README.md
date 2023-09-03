@@ -82,7 +82,7 @@ $ npm run db:dev:restart
   - method: DELETE
 ```
 
-\*Note: role can be only: admin or user, state: male or female.
+\*Note: role can be only: admin or user, state: male or female. In addition I am added validation for endpoints with msg errors.
 
 ### Contacts
 
