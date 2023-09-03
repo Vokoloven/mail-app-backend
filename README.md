@@ -35,7 +35,7 @@ Test app builded by [Nest](https://github.com/nestjs/nest) framework.
     - Add environment variable from .env.example.dev
     - Change USER and PASSWORD from docker-compose.yml
 4. docker compose up users-db -d
-5. npx prisma push db
+5. npx prisma db push
 ```
 
 ## Running the app
