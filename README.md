@@ -31,10 +31,26 @@ Test app builded by [Nest](https://github.com/nestjs/nest) framework.
 ```
 1. git clone https://github.com/Vokoloven/mail-app-backend.git
 2. npm install
-3. Create **.env** in root of application.
-    - Add environment variable from **.env.example.dev**
+3. Create .env in root of application.
+    - Add environment variable from .env.example.dev
     - Change USER and PASSWORD from docker-compose.yml
 4. docker compose up users-db -d
 5. npx prisma generate
    - npx prisma db push
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+
+# restart db and deploy prisma changes
+$ npm run db:dev:restart
 ```
