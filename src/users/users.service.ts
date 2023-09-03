@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { UsersDto } from './dto';
+import { UsersDto, UsersPatchDto } from './dto';
 
 @Injectable()
 export class UsersService {
@@ -44,7 +44,7 @@ export class UsersService {
     return users;
   }
 
-  async updateDataUserById(id: number, dto: UsersDto) {
+  async updateDataUserById(id: number, dto: UsersPatchDto) {
     const existingUser = await this.prisma.user.findUnique({
       where: {
         id,

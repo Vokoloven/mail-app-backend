@@ -9,7 +9,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { UsersDto } from './dto';
+import { UsersDto, UsersPatchDto } from './dto';
 
 @Controller('users')
 export class UsersController {
@@ -44,7 +44,7 @@ export class UsersController {
   }
 
   @Patch(':id')
-  async updateUserById(@Param('id') id: string, @Body() dto: UsersDto) {
+  async updateUserById(@Param('id') id: string, @Body() dto: UsersPatchDto) {
     try {
       const parseId = parseInt(id);
 

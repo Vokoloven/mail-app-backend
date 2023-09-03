@@ -1,4 +1,10 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 enum Role {
   ADMIN = 'admin',
@@ -20,7 +26,6 @@ export class UsersDto {
   email: string;
 
   @IsEnum(Role)
-  @IsNotEmpty()
   role: 'admin' | 'user';
 
   @IsString()
@@ -32,6 +37,35 @@ export class UsersDto {
   lastName: string;
 
   @IsEnum(State)
+  state: 'male' | 'female';
+}
+
+export class UsersPatchDto {
+  @IsString()
   @IsNotEmpty()
+  @IsOptional()
+  username: string;
+
+  @IsEmail()
+  @IsNotEmpty()
+  @IsOptional()
+  email: string;
+
+  @IsEnum(Role)
+  @IsOptional()
+  role: 'admin' | 'user';
+
+  @IsString()
+  @IsNotEmpty()
+  @IsOptional()
+  firstName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsOptional()
+  lastName: string;
+
+  @IsEnum(State)
+  @IsOptional()
   state: 'male' | 'female';
 }
