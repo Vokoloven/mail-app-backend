@@ -59,8 +59,6 @@ $ npm run db:dev:restart
 ```
  Localhost - http://localhost:3333
 
-
-
 1. Create new user
   - endpoint:  http://localhost:3333/users
   - method: POST
