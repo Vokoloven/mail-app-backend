@@ -26,7 +26,7 @@
 
 Test app builded by [Nest](https://github.com/nestjs/nest) framework.
 
-## Installation
+## Installation on your PC
 
 ```
 1. git clone https://github.com/Vokoloven/mail-app-backend.git
@@ -35,8 +35,7 @@ Test app builded by [Nest](https://github.com/nestjs/nest) framework.
     - Add environment variable from .env.example.dev
     - Change USER and PASSWORD from docker-compose.yml
 4. docker compose up users-db -d
-5. npx prisma generate
-   - npx prisma db push
+5. npx prisma push
 ```
 
 ## Running the app
@@ -54,3 +53,35 @@ $ npm run start:prod
 # restart db and deploy prisma changes
 $ npm run db:dev:restart
 ```
+
+## Endpoints
+
+```
+ Localhost - http://localhost:3333
+
+
+
+1. Create new user
+  - endpoint:  http://localhost:3333/users
+  - method: POST
+  - body: {username, email, role*, firstName, state*, lastName}
+2. Get all users
+  - endpoint: http://localhost:3333/users
+  - method: GET
+3. Sorted by role: admin or user
+  - endpoint: http://localhost:3333/users/byRole/{admin or user}
+  - method: GET
+4. Update existing user
+  - endpoint: http://localhost:3333/users/{user id}
+  - method: PATCH
+  - body: {username, email, role*, firstName, state*, lastName}
+5. Delete existing user
+  - endpoint: http://localhost:3333/users/{user id}
+  - method: DELETE
+```
+
+\*Note: role can be only: admin or user, state: male or female.
+
+### Contacts
+
+Anyway don't hesitate to contact me, you can find my contacts [here](https://github.com/Vokoloven).
