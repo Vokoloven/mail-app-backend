@@ -5,7 +5,7 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL,
     "role" TEXT NOT NULL,
     "dateCreate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "profileId" INTEGER NOT NULL,
+    "profileId" INTEGER,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -24,4 +24,4 @@ CREATE TABLE "profiles" (
 CREATE UNIQUE INDEX "users_profileId_key" ON "users"("profileId");
 
 -- AddForeignKey
-ALTER TABLE "users" ADD CONSTRAINT "users_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "profiles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "users" ADD CONSTRAINT "users_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "profiles"("id") ON DELETE SET NULL ON UPDATE CASCADE;
