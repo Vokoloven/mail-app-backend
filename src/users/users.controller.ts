@@ -68,7 +68,6 @@ export class UsersController {
 
       return { message: `User deleted successfully by ID ${id}` };
     } catch (error) {
-      console.log(error);
       if (error instanceof NotFoundException) {
         throw new NotFoundException(error.message);
       }
